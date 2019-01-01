@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android WebRTC 相关设置 - Twosx-Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="贰师兄" /><meta name="description" content="总结下最近适配WebView使用WebRTC的一些设置。
+这部分在网上的资料比较少，踩了很多坑。Android 5.0 以上才能使用 WebRTC。实际测试中，有些机型（lg G4 &amp;hellip;）存在兼容性问题，例如无法获取麦克风权限，无法播放 等~ 慢慢摸索~~
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/android_webrtc_setting/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.63c6088e.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Android WebRTC 相关设置" />
+<meta property="og:description" content="总结下最近适配WebView使用WebRTC的一些设置。
+
+这部分在网上的资料比较少，踩了很多坑。Android 5.0 以上才能使用 WebRTC。实际测试中，有些机型（lg G4 &hellip;）存在兼容性问题，例如无法获取麦克风权限，无法播放 等~  慢慢摸索~~" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/android_webrtc_setting/" /><meta property="article:published_time" content="2017-05-15T14:37:54&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-02T02:19:14&#43;08:00"/>
+
+<meta itemprop="name" content="Android WebRTC 相关设置">
+<meta itemprop="description" content="总结下最近适配WebView使用WebRTC的一些设置。
+
+这部分在网上的资料比较少，踩了很多坑。Android 5.0 以上才能使用 WebRTC。实际测试中，有些机型（lg G4 &hellip;）存在兼容性问题，例如无法获取麦克风权限，无法播放 等~  慢慢摸索~~">
+
+
+<meta itemprop="datePublished" content="2017-05-15T14:37:54&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-02T02:19:14&#43;08:00" />
+<meta itemprop="wordCount" content="639">
+
+
+
+<meta itemprop="keywords" content="Android,WebRTC," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android WebRTC 相关设置"/>
+<meta name="twitter:description" content="总结下最近适配WebView使用WebRTC的一些设置。
+
+这部分在网上的资料比较少，踩了很多坑。Android 5.0 以上才能使用 WebRTC。实际测试中，有些机型（lg G4 &hellip;）存在兼容性问题，例如无法获取麦克风权限，无法播放 等~  慢慢摸索~~"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Twosx-Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">专题</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Twosx-Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">专题</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android WebRTC 相关设置</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-05-15 </span>
+        <div class="post-category">
+            <a href="/categories/android/"> Android </a>
+            </div>
+          <span class="more-meta"> 约 639 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#添加权限-指定硬件设备">添加权限，指定硬件设备</a></li>
+<li><a href="#设置webview-使网页有权调用麦克风">设置WebView，使网页有权调用麦克风</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>总结下最近适配WebView使用WebRTC的一些设置。</p>
+
+<p>这部分在网上的资料比较少，踩了很多坑。Android 5.0 以上才能使用 WebRTC。实际测试中，有些机型（lg G4 &hellip;）存在兼容性问题，例如无法获取麦克风权限，无法播放 等~  慢慢摸索~~</p>
+
+<h2 id="添加权限-指定硬件设备">添加权限，指定硬件设备</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--单独使用音频需要的权限--&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.RECORD_AUDIO&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.MODIFY_AUDIO_SETTINGS&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">&#34;android.hardware.audio.low_latency&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">&#34;android.hardware.audio.pro&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span>
+    <span class="na">android:name=</span><span class="s">&#34;android.hardware.microphone&#34;</span>
+    <span class="na">android:required=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+<span class="c">&lt;!--使用摄像头还需要添加的权限--&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.CAMERA&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">&#34;android.hardware.camera.autofocus&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">&#34;android.hardware.camera&#34;</span> <span class="na">android:required=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-feature</span> <span class="na">android:name=</span><span class="s">&#34;android.hardware.camera.front&#34;</span> <span class="na">android:required=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="设置webview-使网页有权调用麦克风">设置WebView，使网页有权调用麦克风</h2>
+
+<p>重写WebChromeClient，授予网页权限。
+当网页调用<code>getUserMedia()</code>获取权限时，会触发<code>onPermissionRequest()</code>，需要在方法中做一些处理。代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 注意只有在Android 5.0以后才有这个方法
+</span><span class="c1"></span><span class="nd">@RequiresApi</span><span class="o">(</span><span class="n">Build</span><span class="o">.</span><span class="na">VERSION_CODES</span><span class="o">.</span><span class="na">LOLLIPOP</span><span class="o">)</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onPermissionRequest</span><span class="o">(</span><span class="n">PermissionRequest</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// super.onPermissionRequest(request);
+</span><span class="c1"></span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getResources</span><span class="o">().</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">request</span><span class="o">.</span><span class="na">getResources</span><span class="o">()[</span><span class="n">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="n">PermissionRequest</span><span class="o">.</span><span class="na">RESOURCE_AUDIO_CAPTURE</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">&#34;MainActivity&#34;</span><span class="o">,</span> <span class="s">&#34;申请麦克风权限&#34;</span><span class="o">);</span>
+        <span class="c1">// 判断权限
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(!</span><span class="n">lacksPermission</span><span class="o">(</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECORD_AUDIO</span><span class="o">))</span> <span class="o">{</span> <span class="c1">// 已经拥有权限
+</span><span class="c1"></span>            <span class="c1">// 建议加入弹窗，让用户现在选择是否在这个网页使用麦克风
+</span><span class="c1"></span>            <span class="n">request</span><span class="o">.</span><span class="na">grant</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getResources</span><span class="o">());</span> <span class="c1">// 直接同意授权
+</span><span class="c1"></span>        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 系统申请权限
+</span><span class="c1"></span>            <span class="n">mPermissionRequest</span> <span class="o">=</span> <span class="n">request</span><span class="o">;</span>
+            <span class="n">ActivityCompat</span><span class="o">.</span><span class="na">requestPermissions</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span>
+                    <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">RECORD_AUDIO</span><span class="o">},</span> <span class="n">PERMISSION_REQUEST_CODE</span><span class="o">);</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="注意事项">注意事项</h2>
+
+<ol>
+<li>网页必须是https，不然在请求权限的时候，会报SSL错误，触发WebViewClient的<code>onReceivedSslError()</code>方法。</li>
+<li>取消必须由用户手动触发媒体播放<code>mWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);</code></li>
+</ol>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">贰师兄</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-01-02</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">原创文章，如需转载请注明文章作者和出处。谢谢！</span>
+  </p>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/android/">Android</a>
+          <a href="/tags/webrtc/">WebRTC</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/android_auto_hide_keyboard/">
+            <span class="next-text nav-default">Android点击 EditText外任意位置收起键盘</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <span id="/post/android_webrtc_setting/" class="leancloud_visitors" data-flag-title="Android WebRTC 相关设置">
+    <span class="post-meta-item-text">当前文章阅读量: </span>
+    <span class="leancloud-visitors-count">1000000</span>
+    <p></p>
+  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'OD7GoeP0J6Smam4cab2mhguT-gzGzoHsz',
+        appKey: 'EGxrkJVnugY4fbWUiMUHVe4y',
+        notify:  true , 
+        verify:  false , 
+        avatar:'mm', 
+        placeholder: '说点什么吧...(记得填邮箱-有人回复你将会收到邮件提醒)',
+        visitor:  true 
+    });
+  </script>
+
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:twosxx@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/TwoSX" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">贰师兄</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

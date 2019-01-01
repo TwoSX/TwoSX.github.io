@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EditText on Twosx-Blog</title>
+    <link>http://localhost:1313/tags/edittext/</link>
+    <description>Recent content in EditText on Twosx-Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 11 May 2017 02:09:39 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/edittext/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android点击 EditText外任意位置收起键盘</title>
+      <link>http://localhost:1313/post/android_auto_hide_keyboard/</link>
+      <pubDate>Thu, 11 May 2017 02:09:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/android_auto_hide_keyboard/</guid>
+      <description>&lt;h3 id=&#34;前言&#34;&gt;前言&lt;/h3&gt;
+
+&lt;p&gt;在开发中出现了这个需求，记录下来，方便下次使用。&lt;/p&gt;
+
+&lt;p&gt;用户在输入文字过程中，经常会点击别的地方，或者是滑动，这时候希望会自动收起键盘。这一点在ios中就系统已经实现了这个功能。Android中还是需要自己做下处理。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

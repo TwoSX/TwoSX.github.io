@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="http://localhost:1313/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="http://twosx.xyz/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/post/android_webrtc_setting/</loc>
+    <loc>http://twosx.xyz/post/android_webrtc_setting/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/android_auto_hide_keyboard/</loc>
+    <loc>http://twosx.xyz/post/android_auto_hide_keyboard/</loc>
     <lastmod>2019-01-02T02:09:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/android/</loc>
+    <loc>http://twosx.xyz/tags/android/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/android/</loc>
+    <loc>http://twosx.xyz/categories/android/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://twosx.xyz/categories/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/edittext/</loc>
+    <loc>http://twosx.xyz/tags/edittext/</loc>
     <lastmod>2019-01-02T02:09:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>http://twosx.xyz/post/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>http://twosx.xyz/tags/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://twosx.xyz/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/webrtc/</loc>
+    <loc>http://twosx.xyz/tags/webrtc/</loc>
     <lastmod>2019-01-02T02:19:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

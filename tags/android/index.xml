@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Twosx-Blog</title>
-    <link>http://localhost:1313/tags/android/</link>
+    <link>http://twosx.xyz/tags/android/</link>
     <description>Recent content in Android on Twosx-Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 15 May 2017 14:37:54 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://twosx.xyz/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android WebRTC 相关设置</title>
-      <link>http://localhost:1313/post/android_webrtc_setting/</link>
+      <link>http://twosx.xyz/post/android_webrtc_setting/</link>
       <pubDate>Mon, 15 May 2017 14:37:54 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/android_webrtc_setting/</guid>
+      <guid>http://twosx.xyz/post/android_webrtc_setting/</guid>
       <description>&lt;p&gt;总结下最近适配WebView使用WebRTC的一些设置。&lt;/p&gt;
 
 &lt;p&gt;这部分在网上的资料比较少，踩了很多坑。Android 5.0 以上才能使用 WebRTC。实际测试中，有些机型（lg G4 &amp;hellip;）存在兼容性问题，例如无法获取麦克风权限，无法播放 等~  慢慢摸索~~&lt;/p&gt;</description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Android点击 EditText外任意位置收起键盘</title>
-      <link>http://localhost:1313/post/android_auto_hide_keyboard/</link>
+      <link>http://twosx.xyz/post/android_auto_hide_keyboard/</link>
       <pubDate>Thu, 11 May 2017 02:09:39 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/android_auto_hide_keyboard/</guid>
+      <guid>http://twosx.xyz/post/android_auto_hide_keyboard/</guid>
       <description>&lt;h3 id=&#34;前言&#34;&gt;前言&lt;/h3&gt;
 
 &lt;p&gt;在开发中出现了这个需求，记录下来，方便下次使用。&lt;/p&gt;
